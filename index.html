@@ -1,0 +1,19 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+<html>
+    <head></head>
+        <body background="{% static 'polls/images/background.gif' %}"></body>
+            <h1 padding = "50pix">已发布问卷</h1>
+                <h2>创建者：吴佳霖</h1>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+    </html>
